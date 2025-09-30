@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>7 Oasis Bungalow – Grand Launch</title>
+<link rel="icon" type="image/png" href="image/icon.png">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold-light: #d4af37;
+    --gold-dark: #b8860b;
+    --white: #fff;
+    --highlight-bg: #fff8e1;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #fafafa, #f5f5f5);
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    width: 100%;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    overflow: hidden;
+    animation: fadeIn 1s ease;
+  }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} } 
+  @keyframes goldShine { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+  .header {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+    background-size: 200% 200%;
+    animation: goldShine 6s ease infinite;
+    padding: 40px 40px;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+    text-align: left;
+  }
+
+  .header .logo { max-width: 110px; height: auto; flex-shrink: 0; }
+  .title { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; margin-left: 80px; }
+  .title .main { font-family: "Cinzel Decorative", serif; font-size: 90px; font-weight: 800; background: linear-gradient(135deg, #fff, #fef5c4, var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 1px 1px 4px rgba(0,0,0,0.25); letter-spacing: 2px; }
+  .title .sub { font-family: "Playfair Display", serif; font-size: 40px; font-weight: 500; color: #fff; margin-top: 5px; letter-spacing: 3px; }
+
+  .content { padding: 40px 30px; text-align: center; }
+  .content h2 { font-size: 28px; color: var(--gold-dark); font-weight: 700; margin-bottom: 20px; }
+
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+  }
+
+  .countdown .item { background: var(--highlight-bg); padding: 14px 12px; border-radius: 12px; min-width: 70px; box-shadow: inset 0 0 6px rgba(0,0,0,0.08); transition: transform 0.3s ease; }
+  .countdown .item:hover { transform: translateY(-5px); }
+  .countdown .num { font-size: 26px; font-weight: 700; background: linear-gradient(135deg, var(--gold-light), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .countdown .lbl { font-size: 13px; color: #555; }
+
+  /* Notify Button & Form */
+  .subscribe-container { margin-top: 25px; }
+  .notify-btn {
+    background: var(--gold-light);
+    border: none;
+    color: #fff;
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .notify-btn:hover { background: var(--gold-dark); transform: scale(1.05); }
+
+  .subscribe {
+    display: none; /* Hidden initially */
+    flex-direction: column;
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    background: #fff;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.5s ease;
+  }
+
+  .subscribe input {
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: all 0.3s;
+  }
+
+  .subscribe input:focus { border-color: var(--gold-dark); box-shadow: 0 0 5px rgba(184,134,11,0.3); }
+
+  .subscribe .btn {
+    background: var(--gold-light);
+    border: none;
+    color: #fff;
+    padding: 12px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .subscribe .btn:hover { background: var(--gold-dark); }
+
+  .event-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
+    border-left: 5px solid var(--gold-light);
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(212,175,55,0.15);
+  }
+  @media (max-width: 768px) {
+  .title .main { font-size: 52px; }
+  .title .sub { font-size: 26px; }
+  .header { flex-direction: column; text-align: center; }
+  .title { margin-left: 0; align-items: center; }
+}
+
+@media (max-width: 480px) {
+  .title .main { font-size: 38px; }
+  .title .sub { font-size: 22px; }
+}
+
+
+</style>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function(){ emailjs.init({ publicKey: "RfQE6dOyM2pI3uFI5" }); })();
+</script>
+</head>
+<body>
+<main class="card">
+  <div class="header">
+    <img src="image/logo.jpg" alt="7 Oasis Logo" class="logo">
+    <div class="title">
+      <span class="main">7 Oasis</span>
+      <span class="sub">Bungalow</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>Grand Launch Countdown</h2>
+
+    <div class="countdown">
+      <div class="item"><div class="num" id="days">00</div><div class="lbl">Days</div></div>
+      <div class="item"><div class="num" id="hours">00</div><div class="lbl">Hours</div></div>
+      <div class="item"><div class="num" id="mins">00</div><div class="lbl">Minutes</div></div>
+      <div class="item"><div class="num" id="secs">00</div><div class="lbl">Seconds</div></div>
+    </div>
+
+    <!-- Notify Button -->
+    <div class="subscribe-container">
+      <button class="notify-btn" onclick="showForm()">Contact us</button>
+
+      <!-- Hidden Contact Form -->
+      <form id="subscribe" class="subscribe" onsubmit="return onSubscribe(event)">
+        <input id="name" type="text" placeholder="Your Name" required aria-label="Name" />
+        <input id="number" type="tel" placeholder="Your Number" required pattern="[0-9]{10}" title="Enter 10 digit number" aria-label="Number" />
+        <button class="btn" type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div class="event-box">
+      <h3>Grand Launch of 7 Oasis Bungalow</h3>
+      <p style="font-style:italic; color:#555;">
+        “Carrying forward the trusted legacy of Chandrakant Kaka Kele, CK Corporation proudly invites you to the launch of ‘7 Oasis.’”
+      </p>
+      <p style="font-weight:600;">
+        📅 Wednesday, 29th Oct 2025 <br/>
+        🕙 At 10 PM
+      </p>
+      <p style="font-size:13px; color:#444;">
+        📍 S.no. 74/1A, Behind Jayhind English Medium School, Near Netaji Ground, Deopur, Dhule <br/>
+        <a href="https://maps.app.goo.gl/txcgdXMZyGWXwGgG7" target="_blank">📍 View on Google Maps</a>
+      </p>
+      <p style="font-size:13px; color:var(--gold-dark); font-weight:600; margin-top:8px;">
+        An iconic creation raising the standard of city luxury living.
+      </p>
+    </div>
+  </div>
+</main>
+
+<script>
+  // Countdown
+  const targetDate = new Date("2025-10-29T22:00:00");
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function updateCountdown(){
+    const now = new Date();
+    const diff = Math.max(0, targetDate - now);
+    const secs = Math.floor(diff/1000)%60;
+    const mins = Math.floor(diff/1000/60)%60;
+    const hours = Math.floor(diff/1000/60/60)%24;
+    const days = Math.floor(diff/1000/60/60/24);
+    document.getElementById('days').textContent = pad(days);
+    document.getElementById('hours').textContent = pad(hours);
+    document.getElementById('mins').textContent = pad(mins);
+    document.getElementById('secs').textContent = pad(secs);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Show Contact Form
+  function showForm(){
+    document.querySelector('.subscribe').style.display = 'flex';
+    document.querySelector('.notify-btn').style.display = 'none';
+  }
+
+  // Contact Form Submit
+  function onSubscribe(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const number = document.getElementById('number').value.trim();
+
+    if(!name || !number){
+      showToast("Please fill out all fields correctly");
+      return false;
+    }
+
+    const btn = e.submitter || document.querySelector('.btn');
+    btn.disabled = true;
+    const orig = btn.textContent;
+    btn.textContent = 'Sending…';
+
+    emailjs.send("service_pa3zqgn", "template_hq0rnnv", { 
+      name: name,
+      number: number
+    })
+    .then(()=>{
+      btn.textContent='Thanks!';
+      setTimeout(()=>{
+        btn.textContent=orig;
+        btn.disabled=false;
+        document.getElementById('name').value='';
+        document.getElementById('number').value='';
+      },1200);
+      showToast("We will contact you soon!");
+    })
+    .catch(err=>{
+      console.error(err);
+      btn.textContent=orig;
+      btn.disabled=false;
+      showToast("Error — try again");
+    });
+
+    return false;
+  }
+
+  // Toast
+  function showToast(text){
+    const t = document.createElement('div');
+    t.textContent = text;
+    Object.assign(t.style,{
+      position:'fixed', right:'20px', bottom:'20px',
+      padding:'12px 16px', background:'rgba(0,0,0,0.8)',
+      borderRadius:'10px', color:'white', zIndex:9999
+    });
+    document.body.appendChild(t);
+    setTimeout(()=>{ t.style.transition='opacity 320ms ease'; t.style.opacity=0; setTimeout(()=>t.remove(),360)},2200);
+  }
+
+  window.addEventListener('load', ()=>document.getElementById('name').focus());
+</script>
+</body>
+</html>
